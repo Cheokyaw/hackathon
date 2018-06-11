@@ -75,15 +75,24 @@ class Level1(tools._State):
         sprites to walk on"""
         ground_rect1 = collider.Collider(0, c.GROUND_HEIGHT, 2953, 60)
         ground_rect2 = collider.Collider(3048, c.GROUND_HEIGHT, 635, 60)
-        ground_rect3 = collider.Collider(3819, c.GROUND_HEIGHT, 2735, 60)
+        ground_rect3 = collider.Collider(3819, c.GROUND_HEIGHT, 725, 60)
         ground_rect4 = collider.Collider(6647, c.GROUND_HEIGHT, 300, 60)
         ground_rect5 = collider.Collider(6989, c.GROUND_HEIGHT, 1960, 60)
+        ground_rect6 = collider.Collider(4544, c.GROUND_HEIGHT, 0, 60)
+        ground_rect7 = collider.Collider(4589, c.GROUND_HEIGHT, 205, 60)
+        ground_rect8 = collider.Collider(4794, c.GROUND_HEIGHT, 0, 60)
+        ground_rect9 = collider.Collider(4839, c.GROUND_HEIGHT, 1678, 60)
+
 
         self.ground_group = pg.sprite.Group(ground_rect1,
                                             ground_rect2,
                                             ground_rect3,
                                             ground_rect4,
-                                            ground_rect5)
+                                            ground_rect5,
+                                            ground_rect6,
+                                            ground_rect7,
+                                            ground_rect8,
+                                            ground_rect9)
 
 
     def setup_pipes(self):
