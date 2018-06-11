@@ -331,11 +331,14 @@ class Level1(tools._State):
         check10 = checkpoint.Checkpoint(6800, '10')
         check11 = checkpoint.Checkpoint(8504, '11', 5, 6)
         check12 = checkpoint.Checkpoint(8775, '12')
-        check13 = checkpoint.Checkpoint(6771, 'secret_coin', 393, 40, 12)
-        check14 = checkpoint.Checkpoint(6816, 'secret_coin', 393, 40, 12)
-        check15 = checkpoint.Checkpoint(6861, 'secret_coin', 393, 40, 12)
-        check16 = checkpoint.Checkpoint(6906, 'secret_coin', 393, 40, 12)
-        check17 = checkpoint.Checkpoint(6951, 'secret_coin', 393, 40, 12)
+        check13 = checkpoint.Checkpoint(6726, 'secret_coin', 393, 40, 12)
+        check14 = checkpoint.Checkpoint(6771, 'secret_coin', 393, 40, 12)
+        check15 = checkpoint.Checkpoint(6816, 'secret_coin', 393, 40, 12)
+        check16 = checkpoint.Checkpoint(6861, 'secret_coin', 393, 40, 12)
+        check17 = checkpoint.Checkpoint(6906, 'secret_coin', 393, 40, 12)
+        check18 = checkpoint.Checkpoint(6951, 'secret_coin', 393, 40, 12)
+        check19 = checkpoint.Checkpoint(6681, 'secret_coin', 213, 40, 12)
+        check20 = checkpoint.Checkpoint(6681, 'secret_coin', 258, 40, 12)
 
 
         self.check_point_group = pg.sprite.Group(check1, check2, check3,
@@ -343,7 +346,8 @@ class Level1(tools._State):
                                                  check7, check8, check9,
                                                  check10, check11, check12,
                                                  check13,check14,check15,
-                                                 check16, check17)
+                                                 check16, check17,check18,
+                                                 check19)
 
 
     def setup_spritegroups(self):
@@ -441,7 +445,8 @@ class Level1(tools._State):
         checkpoint = pg.sprite.spritecollideany(self.mario,
                                                  self.check_point_group)
         if checkpoint:
-            checkpoint.kill()
+            if checkpoint.name != 'secret_coin':
+                checkpoint.kill()
 
             for i in range(1,11):
                 if checkpoint.name == str(i):
