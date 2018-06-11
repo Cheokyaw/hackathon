@@ -105,6 +105,29 @@ class Mushroom(Powerup):
             self.falling()
 
 
+class DeathMushroom(Powerup):
+    """Powerup that makes Mario become bigger"""
+    def __init__(self, x, y, name='death_mushroom'):
+        super(DeathMushroom, self).__init__(x, y)
+        self.setup_powerup(x, y, name, self.setup_frames)
+
+
+    def setup_frames(self):
+        """Sets up frame list"""
+        self.frames.append(self.get_image(0, 0, 16, 16))
+
+
+    def handle_state(self):
+        """Handles behavior based on state"""
+        print(self.direction)
+        if self.state == c.REVEAL:
+            self.revealing()
+        elif self.state == c.SLIDE:
+            self.sliding()
+        elif self.state == c.FALL:
+            self.falling()
+
+
 class LifeMushroom(Mushroom):
     """1up mushroom"""
     def __init__(self, x, y, name='1up_mushroom'):

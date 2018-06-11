@@ -213,7 +213,7 @@ class Level1(tools._State):
     def setup_coin_boxes(self):
         """Creates all the coin boxes and puts them in a sprite group"""
         coin_box1  = coin_box.Coin_box(685, 365, c.COIN, self.coin_group)
-        coin_box2  = coin_box.Coin_box(901, 365, c.MUSHROOM, self.powerup_group)
+        coin_box2  = coin_box.Coin_box(901, 365, c.DEATH_MUSHROOM, self.powerup_group)
         coin_box3  = coin_box.Coin_box(987, 365, c.COIN, self.coin_group)
         coin_box4  = coin_box.Coin_box(943, 193, c.COIN, self.coin_group)
         coin_box5  = coin_box.Coin_box(3342, 365, c.MUSHROOM, self.powerup_group)
@@ -591,6 +591,7 @@ class Level1(tools._State):
             self.adjust_mario_for_x_shell_collisions(shell)
 
         elif powerup:
+            print(powerup.name)
             if powerup.name == c.STAR:
                 self.game_info[c.SCORE] += 1000
 
@@ -618,6 +619,9 @@ class Level1(tools._State):
 
                 self.game_info[c.LIVES] += 1
                 setup.SFX['one_up'].play()
+            elif powerup.name == c.DEATH_MUSHROOM:
+                self.mario.start_death_jump(self.game_info)
+                self.state = c.FROZEN
             elif powerup.name == c.FIREFLOWER:
                 setup.SFX['powerup'].play()
                 self.game_info[c.SCORE] += 1000
@@ -1114,6 +1118,8 @@ class Level1(tools._State):
         """Moves mushrooms, stars and fireballs along the x, y axes"""
         for powerup in self.powerup_group:
             if powerup.name == c.MUSHROOM:
+                self.adjust_mushroom_position(powerup)
+            elif powerup.name == c.DEATH_MUSHROOM:
                 self.adjust_mushroom_position(powerup)
             elif powerup.name == c.STAR:
                 self.adjust_star_position(powerup)

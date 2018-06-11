@@ -104,6 +104,7 @@ EXPLODING = 'exploding'
 #Brick and coin box contents
 
 MUSHROOM = 'mushroom'
+DEATH_MUSHROOM = 'death_mushroom'
 STAR = 'star'
 FIREFLOWER = 'fireflower'
 SIXCOINS = '6coins'
