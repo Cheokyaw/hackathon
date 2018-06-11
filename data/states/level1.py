@@ -213,14 +213,14 @@ class Level1(tools._State):
     def setup_coin_boxes(self):
         """Creates all the coin boxes and puts them in a sprite group"""
         coin_box1  = coin_box.Coin_box(685, 365, c.COIN, self.coin_group)
-        coin_box2  = coin_box.Coin_box(901, 365, c.DEATH_MUSHROOM, self.powerup_group)
+        coin_box2  = coin_box.Coin_box(901, 365, c.COIN, self.coin_group)
         coin_box3  = coin_box.Coin_box(987, 365, c.COIN, self.coin_group)
-        coin_box4  = coin_box.Coin_box(943, 193, c.COIN, self.coin_group)
-        coin_box5  = coin_box.Coin_box(3342, 365, c.MUSHROOM, self.powerup_group)
+        coin_box4  = coin_box.Coin_box(943, 193, c.DEATH_MUSHROOM, self.powerup_group)
+        coin_box5  = coin_box.Coin_box(3342, 365, c.DEATH_MUSHROOM, self.powerup_group)
         coin_box6  = coin_box.Coin_box(4030, 193, c.COIN, self.coin_group)
         coin_box7  = coin_box.Coin_box(4544, 365, c.COIN, self.coin_group)
         coin_box8  = coin_box.Coin_box(4672, 365, c.COIN, self.coin_group)
-        coin_box9  = coin_box.Coin_box(4672, 193, c.MUSHROOM, self.powerup_group)
+        coin_box9  = coin_box.Coin_box(4672, 193, c.DEATH_MUSHROOM, self.powerup_group)
         coin_box10 = coin_box.Coin_box(4800, 365, c.COIN, self.coin_group)
         coin_box11 = coin_box.Coin_box(5531, 193, c.COIN, self.coin_group)
         coin_box12 = coin_box.Coin_box(7288, 365, c.COIN, self.coin_group)
@@ -341,6 +341,8 @@ class Level1(tools._State):
         check18 = checkpoint.Checkpoint(6951, 'secret_coin', 393, 40, 12)
         check19 = checkpoint.Checkpoint(6681, 'secret_coin', 213, 40, 12)
         check20 = checkpoint.Checkpoint(6681, 'secret_coin', 258, 40, 12)
+        check21 = checkpoint.Checkpoint(901, 'secret_coin', 435, 40, 12)
+
 
 
         self.check_point_group = pg.sprite.Group(check1, check2, check3,
@@ -349,7 +351,7 @@ class Level1(tools._State):
                                                  check10, check11, check12,
                                                  check13,check14,check15,
                                                  check16, check17,check18,
-                                                 check19)
+                                                 check19,check20,check21)
 
 
     def setup_spritegroups(self):
