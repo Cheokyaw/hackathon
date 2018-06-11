@@ -73,15 +73,17 @@ class Level1(tools._State):
     def setup_ground(self):
         """Creates collideable, invisible rectangles over top of the ground for
         sprites to walk on"""
-        ground_rect1 = collider.Collider(0, c.GROUND_HEIGHT,    2953, 60)
-        ground_rect2 = collider.Collider(3048, c.GROUND_HEIGHT,  635, 60)
+        ground_rect1 = collider.Collider(0, c.GROUND_HEIGHT, 2953, 60)
+        ground_rect2 = collider.Collider(3048, c.GROUND_HEIGHT, 635, 60)
         ground_rect3 = collider.Collider(3819, c.GROUND_HEIGHT, 2735, 60)
-        ground_rect4 = collider.Collider(6647, c.GROUND_HEIGHT, 2300, 60)
+        ground_rect4 = collider.Collider(6647, c.GROUND_HEIGHT, 300, 60)
+        ground_rect5 = collider.Collider(6989, c.GROUND_HEIGHT, 1960, 60)
 
         self.ground_group = pg.sprite.Group(ground_rect1,
-                                           ground_rect2,
-                                           ground_rect3,
-                                           ground_rect4)
+                                            ground_rect2,
+                                            ground_rect3,
+                                            ground_rect4,
+                                            ground_rect5)
 
 
     def setup_pipes(self):
@@ -91,7 +93,7 @@ class Level1(tools._State):
         pipe2 = collider.Collider(1631, 409, 83, 140)
         pipe3 = collider.Collider(1973, 366, 83, 170)
         pipe4 = collider.Collider(2445, 366, 83, 170)
-        pipe5 = collider.Collider(6989, 452, 83, 82)
+        pipe5 = collider.Collider(6989, 409, 83, 140)
         pipe6 = collider.Collider(7675, 452, 83, 82)
 
         self.pipe_group = pg.sprite.Group(pipe1, pipe2,
