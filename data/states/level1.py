@@ -73,7 +73,7 @@ class Level1(tools._State):
     def setup_ground(self):
         """Creates collideable, invisible rectangles over top of the ground for
         sprites to walk on"""
-        ground_rect1 = collider.Collider(0, c.GROUND_HEIGHT, 2953, 60)
+        ground_rect1 = collider.Collider(0, c.GROUND_HEIGHT, 2908, 60)
         ground_rect2 = collider.Collider(3048, c.GROUND_HEIGHT, 635, 60)
         ground_rect3 = collider.Collider(3819, c.GROUND_HEIGHT, 725, 60)
         ground_rect4 = collider.Collider(6647, c.GROUND_HEIGHT, 300, 60)
@@ -225,14 +225,14 @@ class Level1(tools._State):
         coin_box2  = coin_box.Coin_box(901, 365, c.COIN, self.coin_group)
         coin_box3  = coin_box.Coin_box(987, 365, c.COIN, self.coin_group)
         coin_box4  = coin_box.Coin_box(943, 193, c.DEATH_MUSHROOM, self.powerup_group)
-        coin_box5  = coin_box.Coin_box(3342, 365, c.DEATH_MUSHROOM, self.powerup_group)
-        coin_box6  = coin_box.Coin_box(4030, 193, c.COIN, self.coin_group)
+        coin_box5  = coin_box.Coin_box(3342, 365, c.MUSHROOM, self.powerup_group)
+        coin_box6  = coin_box.Coin_box(4030, 193, c.DEATH_MUSHROOM, self.powerup_group)
         coin_box7  = coin_box.Coin_box(4544, 365, c.COIN, self.coin_group)
-        coin_box8  = coin_box.Coin_box(4672, 365, c.COIN, self.coin_group)
+        coin_box8  = coin_box.Coin_box(4672, 365, c.MUSHROOM, self.powerup_group)
         coin_box9  = coin_box.Coin_box(4672, 193, c.DEATH_MUSHROOM, self.powerup_group)
         coin_box10 = coin_box.Coin_box(4800, 365, c.COIN, self.coin_group)
         coin_box11 = coin_box.Coin_box(5531, 193, c.COIN, self.coin_group)
-        coin_box12 = coin_box.Coin_box(7288, 365, c.COIN, self.coin_group)
+        coin_box12 = coin_box.Coin_box(7288, 365, c.MUSHROOM, self.powerup_group)
 
         self.coin_box_group = pg.sprite.Group(coin_box1,  coin_box2,
                                               coin_box3,  coin_box4,
@@ -289,24 +289,36 @@ class Level1(tools._State):
         goomba11 = enemies.Goomba()
         goomba12 = enemies.Goomba()
         goomba13 = enemies.Goomba()
-        goomba14 = enemies.Goomba()
-        goomba15 = enemies.Goomba()
+        goomba14 = enemies.Goomba(300)
+        goomba15 = enemies.Goomba(300)
         goomba16 = enemies.Goomba()
-        goomba17 = enemies.Goomba()
-        goomba18 = enemies.Goomba()
+        goomba17 = enemies.Goomba(300)
+        goomba18 = enemies.Goomba(300)
+        goomba19 = enemies.Goomba(300)
+        goomba20 = enemies.Goomba(300)
+        goomba21 = enemies.Goomba(300)
+        goomba22 = enemies.Goomba()
+
 
         koopa0 = enemies.Koopa()
+        koopa1 = enemies.Koopa()
+        koopa2 = enemies.Koopa()
+        koopa3 = enemies.Koopa()
+        koopa4 = enemies.Koopa()
+        koopa5 = enemies.Koopa()
+        koopa6 = enemies.Koopa()
 
-        enemy_group1 = pg.sprite.Group(goomba0,goomba16,goomba17,goomba18)
-        enemy_group2 = pg.sprite.Group(goomba1)
-        enemy_group3 = pg.sprite.Group(goomba2, goomba3)
-        enemy_group4 = pg.sprite.Group(goomba4, goomba5)
+
+        enemy_group1 = pg.sprite.Group(koopa6,goomba16,goomba17,goomba18,goomba21,koopa1)
+        enemy_group2 = pg.sprite.Group(goomba1,koopa2,koopa3)
+        enemy_group3 = pg.sprite.Group(goomba2, goomba3,koopa4)
+        enemy_group4 = pg.sprite.Group(goomba4, goomba5,koopa5)
         enemy_group5 = pg.sprite.Group(goomba6, goomba7)
-        enemy_group6 = pg.sprite.Group(koopa0)
+        enemy_group6 = pg.sprite.Group(koopa0,goomba0)
         enemy_group7 = pg.sprite.Group(goomba8, goomba9)
         enemy_group8 = pg.sprite.Group(goomba10, goomba11)
         enemy_group9 = pg.sprite.Group(goomba12, goomba13)
-        enemy_group10 = pg.sprite.Group(goomba14, goomba15)
+        enemy_group10 = pg.sprite.Group(goomba14, goomba15,goomba19,goomba20)
 
         self.enemy_group_list = [enemy_group1,
                                  enemy_group2,
@@ -339,7 +351,7 @@ class Level1(tools._State):
         check7 = checkpoint.Checkpoint(4470, '7')
         check8 = checkpoint.Checkpoint(4950, '8')
         check9 = checkpoint.Checkpoint(5100, '9')
-        check10 = checkpoint.Checkpoint(6800, '10')
+        check10 = checkpoint.Checkpoint(8017, '10')
         check11 = checkpoint.Checkpoint(8504, '11', 5, 6)
         check12 = checkpoint.Checkpoint(8775, '12')
         check13 = checkpoint.Checkpoint(6726, 'secret_coin', 393, 40, 12)
@@ -351,6 +363,7 @@ class Level1(tools._State):
         check19 = checkpoint.Checkpoint(6681, 'secret_coin', 213, 40, 12)
         check20 = checkpoint.Checkpoint(6681, 'secret_coin', 258, 40, 12)
         check21 = checkpoint.Checkpoint(901, 'secret_coin', 435, 40, 12)
+        check22 = checkpoint.Checkpoint(2908, 'secret_coin', 393, 40, 12)
 
 
 
@@ -360,7 +373,7 @@ class Level1(tools._State):
                                                  check10, check11, check12,
                                                  check13,check14,check15,
                                                  check16, check17,check18,
-                                                 check19,check20,check21)
+                                                 check19,check20,check21,check22)
 
 
     def setup_spritegroups(self):
@@ -602,7 +615,6 @@ class Level1(tools._State):
             self.adjust_mario_for_x_shell_collisions(shell)
 
         elif powerup:
-            print(powerup.name)
             if powerup.name == c.STAR:
                 self.game_info[c.SCORE] += 1000
 

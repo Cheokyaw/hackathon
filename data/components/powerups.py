@@ -119,7 +119,6 @@ class DeathMushroom(Powerup):
 
     def handle_state(self):
         """Handles behavior based on state"""
-        print(self.direction)
         if self.state == c.REVEAL:
             self.revealing()
         elif self.state == c.SLIDE:

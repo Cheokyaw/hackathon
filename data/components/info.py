@@ -123,7 +123,7 @@ class OverheadInfo(object):
         self.stage_label = []
 
 
-        self.create_label(self.mario_label, 'MARIO', 75, 30)
+        self.create_label(self.mario_label, 'PYTHON', 75, 30)
         self.create_label(self.world_label, 'WORLD', 450, 30)
         self.create_label(self.time_label, 'TIME', 625, 30)
         self.create_label(self.stage_label, '1-1', 472, 55)
