@@ -280,10 +280,13 @@ class Level1(tools._State):
         goomba13 = enemies.Goomba()
         goomba14 = enemies.Goomba()
         goomba15 = enemies.Goomba()
+        goomba16 = enemies.Goomba()
+        goomba17 = enemies.Goomba()
+        goomba18 = enemies.Goomba()
 
         koopa0 = enemies.Koopa()
 
-        enemy_group1 = pg.sprite.Group(goomba0)
+        enemy_group1 = pg.sprite.Group(goomba0,goomba16,goomba17,goomba18)
         enemy_group2 = pg.sprite.Group(goomba1)
         enemy_group3 = pg.sprite.Group(goomba2, goomba3)
         enemy_group4 = pg.sprite.Group(goomba4, goomba5)
@@ -316,7 +319,7 @@ class Level1(tools._State):
     def setup_checkpoints(self):
         """Creates invisible checkpoints that when collided will trigger
         the creation of enemies from the self.enemy_group_list"""
-        check1 = checkpoint.Checkpoint(510, "1")
+        check1 = checkpoint.Checkpoint(200, "1")
         check2 = checkpoint.Checkpoint(1400, '2')
         check3 = checkpoint.Checkpoint(1740, '3')
         check4 = checkpoint.Checkpoint(3080, '4')
@@ -328,13 +331,19 @@ class Level1(tools._State):
         check10 = checkpoint.Checkpoint(6800, '10')
         check11 = checkpoint.Checkpoint(8504, '11', 5, 6)
         check12 = checkpoint.Checkpoint(8775, '12')
-        check13 = checkpoint.Checkpoint(2740, 'secret_mushroom', 360, 40, 12)
+        check13 = checkpoint.Checkpoint(6771, 'secret_coin', 393, 40, 12)
+        check14 = checkpoint.Checkpoint(6816, 'secret_coin', 393, 40, 12)
+        check15 = checkpoint.Checkpoint(6861, 'secret_coin', 393, 40, 12)
+        check16 = checkpoint.Checkpoint(6906, 'secret_coin', 393, 40, 12)
+        check17 = checkpoint.Checkpoint(6951, 'secret_coin', 393, 40, 12)
+
 
         self.check_point_group = pg.sprite.Group(check1, check2, check3,
                                                  check4, check5, check6,
                                                  check7, check8, check9,
                                                  check10, check11, check12,
-                                                 check13)
+                                                 check13,check14,check15,
+                                                 check16, check17)
 
 
     def setup_spritegroups(self):
@@ -462,6 +471,18 @@ class Level1(tools._State):
                                         checkpoint.rect.bottom - 40,
                                         '1up_mushroom',
                                         self.powerup_group)
+                mushroom_box.start_bump(self.moving_score_list)
+                self.coin_box_group.add(mushroom_box)
+
+                self.mario.y_vel = 7
+                self.mario.rect.y = mushroom_box.rect.bottom
+                self.mario.state = c.FALL
+
+            elif checkpoint.name == 'secret_coin' and self.mario.y_vel < 0:
+                mushroom_box = coin_box.Coin_box(checkpoint.rect.x,
+                                        checkpoint.rect.bottom - 40,
+                                        'coin',
+                                        self.coin_group)
                 mushroom_box.start_bump(self.moving_score_list)
                 self.coin_box_group.add(mushroom_box)
 
